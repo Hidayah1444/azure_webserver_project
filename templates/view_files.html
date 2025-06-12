@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Files</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Finance Files</h2>
+        <ul>
+            {% for file in files %}
+                <li>
+                    <a href="/uploads/{{ file }}" download>{{ file }}</a>
+                    <a href="/delete_file/{{ file }}">[Delete]</a>
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="/dashboard">Back to Dashboard</a>
+    </div>
+</body>
+</html>

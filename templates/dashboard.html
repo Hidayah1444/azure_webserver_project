@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ department }} Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="dashboard">
+        <h1>Welcome, {{ username }}!</h1>
+        <h2>{{ department }} Department</h2>
+        {% if department == 'HR' %}
+            <a href="/post_news">Post Company News</a>
+            <a href="/manage_staff">Manage Staff</a>
+        {% elif department == 'Finance' %}
+            <a href="/upload_files">Upload Finance Files</a>
+            <a href="/view_files">View Files</a>
+        {% elif department == 'Procurement' %}
+            <p>Procurement-related actions go here.</p>
+        {% elif department == 'IT' %}
+            <p>IT Department tools and resources here.</p>
+        {% elif department == 'Project' %}
+            <p>Project Management dashboard functions.</p>
+        {% endif %}
+        <br><br>
+        <a href="/logout">Logout</a>
+    </div>
+</body>
+</html>
