@@ -1,3 +1,4 @@
+
 from flask import Flask, render_template, request, redirect, url_for, session
 import os
 
@@ -35,8 +36,12 @@ def login():
 def dashboard():
     if 'username' not in session:
         return redirect('/login')
+
     department = session['department']
-    return render_template(f'dashboards/{department.lower().replace(" ", "_")}_dashboard.html', username=session['username'], department=department)
+    return render_template(f'dashboards/{department.lower().replace(" ", "_")}_dashboard.html',
+                           username=session['username'],
+                           department=department,
+                           news_list=news_list)
 
 @app.route('/logout')
 def logout():

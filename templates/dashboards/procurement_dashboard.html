@@ -1,28 +1,36 @@
-<!-- templates/dashboards/procurement_dashboard.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Procurement Dashboard</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Procurement Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f0f2f5; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .container { background: white; padding: 40px; border-radius: 10px; width: 600px; box-shadow: 0 0 15px rgba(0,0,0,0.1); }
+        .nav-bar a { margin-right: 15px; text-decoration: none; color: #007bff; font-weight: bold; }
+        .news-section { margin-top: 30px; }
+        .news-list { list-style: none; padding: 0; }
+        .news-list li { background: #f9f9f9; padding: 10px; margin-bottom: 8px; border-left: 4px solid #007bff; }
+    </style>
 </head>
-<body class="bg-gray-100 min-h-screen flex items-center justify-center">
-  <div class="bg-white p-10 rounded-2xl shadow-xl w-full max-w-3xl text-center">
-    <h1 class="text-3xl font-bold text-gray-800 mb-6">Welcome to Procurement Department</h1>
-
-    <p class="text-gray-600 mb-4">
-      Manage purchasing activities and supplier interactions.
-    </p>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6">
-      <a href="#" class="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-xl shadow-md transition">Purchase Orders</a>
-      <a href="#" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-xl shadow-md transition">Supplier List</a>
-    </div>
-
-    <div class="mt-10">
-      <a href="/logout" class="text-blue-600 hover:underline">Logout</a>
-    </div>
-  </div>
+<body>
+<div class="container">
+    <h1>Welcome, {{ username }} (Procurement Department)</h1>
+    <nav class="nav-bar">
+        <a href="/view_news">News</a>
+        <a href="/logout">Logout</a>
+    </nav>
+    <section class="news-section">
+        <h2>Latest News</h2>
+        {% if news_list %}
+        <ul class="news-list">
+            {% for news in news_list %}
+            <li><strong>{{ news.author }}:</strong> {{ news.content }}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>No news posted yet.</p>
+        {% endif %}
+    </section>
+</div>
 </body>
 </html>
